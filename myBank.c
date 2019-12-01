@@ -2,7 +2,7 @@
 #include "myBank.h"
 
 
-
+double Bank[accounts][number] = {0};
 int O (double amount){
     int i=0;
     for (i = 0; i<50; i++){
@@ -24,7 +24,7 @@ double B (int account_number){
 }
     else if (Bank[account_number -901][1] == 0){
 
-        return printf ("The account is closed. \n");
+        printf ("The account is closed. \n");
     }
     else
     {	printf("the interest in your account is: ");
@@ -39,7 +39,7 @@ double D (int account_number, double amount){
 }
     else if (Bank[account_number-901][1] == 0)
     {
-        return printf ("The account is closed. \n");
+         printf ("The account is closed. \n");
     }
     else
     {
@@ -60,7 +60,7 @@ double W (int account_number, double amount){
     }
     else if (Bank[account_number-901][0] < amount)
     {
-        printf ("The account doesn't contain enough money. \n");
+        printf ("The account doesn't contain enough money. \n \n");
     }
     else
     {
@@ -81,28 +81,46 @@ void C (int account_number){
     {
         Bank[account_number -901][1] = 0;
 	Bank[account_number -901][0] = 0;
-        printf("The account has been closed. \n");
+        printf("The account has been closed. \n \n");
     }
 }
 void I (double interest_rate){
     int i;
-    for (i = 0; i<50; i++){
+    int counter = 0;
+    for (i = 0; i<50; i++)
+	{
         if (Bank[i][1] == 1)
         {   double rate = ((interest_rate /100)* Bank[i][0]);
             Bank[i][0] = Bank[i][0] + rate;
 	    printf("the new interest in your account is: ");			
             printf("%0.2lf \n", Bank[i][0]);
         }
-    }
-}
+	else {
+	counter ++;
+        }
+	}
+	if (counter == 50)
+	{
+		printf("there are no open accounts \n \n");
+	}
+	}
 void P (){
     int i;
+    int counter = 0;
     for (i = 0; i<50; i++){
         if (Bank[i][1] == 1)
         {
             printf("The amount in account number %d is: %0.2lf  \n",(i+901) ,Bank[i][0] );
         }
-    }
+	else { 
+	counter ++;
+	}
+	}
+	if (counter == 50)
+	{
+		printf("there are no open accounts \n \n");
+	}
+    
 }
 
 void E (){

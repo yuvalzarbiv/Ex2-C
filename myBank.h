@@ -3,7 +3,7 @@
 #define _myBank_H_
 #define accounts 50
 #define number 2
-double Bank[accounts][number];
+extern double Bank[accounts][number];
 
 int O (double amount);
 double B(int account_number);
